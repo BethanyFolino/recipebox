@@ -4,7 +4,7 @@ from recipe_app.models import Recipe, Author
 # Create your views here.
 def index_view(request):
     recipes = Recipe.objects.all()
-    return render(request, 'index.html', {'recipes': recipes})
+    return render(request, 'homepage.html', {'recipes': recipes})
 
 def recipe_detail(request, id):
     recipe = Recipe.objects.get(id=id)
