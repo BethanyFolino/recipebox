@@ -1,8 +1,13 @@
-<h1>Recipe</h1>
+{% extends 'base.html' %} {% block content %}
+<link rel="stylesheet" href="/static/css/style.css">
+<body>
+<h1 class="title">Recipe</h1>
 <ul>
-    <h2><li>{{recipe.title}}</li></h2>
-    <h2><li><a href='/author/{{recipe.author.id}}/'>{{recipe.author}}</a></li></h2>
-    <h2><li>{{recipe.description}}</li></h2>
-    <h2><li>{{recipe.time_required}}</li></h2>
-    <h2><li>{{recipe.instructions}}</li></h2>
+    <h2 class="title2"><li>Title: {{recipe.title}}</li></h2>
+    <h2 class="title2"><li>Author: <a href='/author/{{recipe.author.id}}/' class="recipelink">{{recipe.author}}</a></li></h2>
+    <h2 class="title2"><li>Description: {{recipe.description}}</li></h2>
+    <h2 class="title2"><li>Time Required: {{recipe.time_required}}</li></h2>
+    <h2 class="title2"><li>Instructions: <br>{{recipe.instructions}}</li></h2>
 </ul>
+</body>
+{% endblock %}

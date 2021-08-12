@@ -11,4 +11,4 @@ class AddRecipeForm(forms.Form):
 
 class AddAuthorForm(forms.Form):
     name = forms.CharField(max_length=50)
-    bio = forms.CharField(widget=forms.Textarea)
+    bio = forms.CharField(widget=forms.TextInput)

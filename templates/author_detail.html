@@ -1,10 +1,15 @@
-<h1>Author</h1>
-<h3><p>{{author.name}}</p></h3>
-<h3><p>{{author.bio}}</p></h3>
+{% extends 'base.html' %} {% block content %}
+
+<link rel="stylesheet" href="/static/css/style.css">
+
+<h1 class="title">Author</h1>
+<h3 class="title2"><p>{{author.name}}</p></h3>
+<h3 class="title2"><p>{{author.bio}}</p></h3>
 
 <ul>
     {% for recipe in recipes %}
-    <h3><li><a href='/recipe/{{recipe.id}}'>{{recipe.title}}</a></li></h3>
+    <h3><li><a href='/recipe/{{recipe.id}}' class="recipelink">{{recipe.title}}</a></li></h3>
 
     {% endfor %}
 </ul>
+{% endblock %}

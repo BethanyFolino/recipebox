@@ -1,5 +1,10 @@
+{% extends 'base.html' %} {% block content %}
+
+<link rel="stylesheet" href="/static/css/style.css">
+<h1 class="title">Add Author</h1>
 <form action="/addauthor/" method="post">
 {% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Submit" />
 </form>
+{% endblock %}
