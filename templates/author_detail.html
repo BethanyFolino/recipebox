@@ -1,10 +1,10 @@
-Author 
-<p>{{author.name}}</p>
-<p>{{author.bio}}</p>
+<h1>Author</h1>
+<h3><p>{{author.name}}</p></h3>
+<h3><p>{{author.bio}}</p></h3>
 
 <ul>
     {% for recipe in recipes %}
-    <li><a href='/recipe/{{recipe.id}}'>{{recipe.title}}</a></li>
+    <h3><li><a href='/recipe/{{recipe.id}}'>{{recipe.title}}</a></li></h3>
 
     {% endfor %}
 </ul>
