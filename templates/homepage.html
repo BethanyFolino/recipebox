@@ -2,14 +2,17 @@
 
 <link rel="stylesheet" href="/static/css/style.css">
 <body>
-<h1 class="title">Homepage</h1>
-<h3><a class="btn btn-success" href='/addauthor/'>Add Author</a></h3>
-    <h3><a class="btn btn-success" href='/addrecipe/'>Add Recipe</a></h3>
-        <h3 class="title2">All Recipes</h3>
-        <ul>
-            {% for recipe in recipes %}
-            <h3><li><a href='/recipe/{{recipe.id}}/' class="recipelink">{{recipe.title}}</a></li></h3>   
-            {% endfor %}
-        </ul>
+
+<div class="title">Homepage</div>
+<a class="btn btn-primary" href='login'>Login</a>
+<a class="btn btn-danger" href='/logout/'>Logout</a>
+<a class="btn btn-success" href='/addauthor/'>Add Author</a>
+<a class="btn btn-success" href='/addrecipe/'>Add Recipe</a>
+<div class="title2">All Recipes</div>
+<ul>
+    {% for recipe in recipes %}
+    <h3><li><a href='/recipe/{{recipe.id}}/' class="recipelink">{{recipe.title}}</a></li></h3>   
+    {% endfor %}
+</ul>
 </body>
 {% endblock %}

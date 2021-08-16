@@ -52,12 +52,10 @@
   }
 
 body{
-    padding-top: 6rem;
-    background-image: url("https://media.istockphoto.com/photos/orange-index-cards-picture-id174687973?k=6&m=174687973&s=170667a&w=0&h=iKhguyVmjUS24fIIZ8Em0xLCAKYQhZp7rXSpL-I6dXY=");
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASIAAACuCAMAAAClZfCTAAAAPFBMVEX//vn///n++/j+fX3///+pq/vN0vtLWf7Y2Pqhpf3///eDhv35+/hgafu0uPi+wv5SYfvq6/uYnfvl5fiOqxTeAAAAx0lEQVR4nO3aS25DMQwDQKX/NG3TpPe/a5d5Oy5pwDNnEAXQ1gwAAAAAAAAANDwRzDPBvBC0cw4AAOzkRDCvBPNGIGhRexUCAAA7aTeg9c07gSmK2jkHAAB20m5A65sPgjkTCFrUXoUAAMBOPgnmQjBfBO2cAwAAcND+Dl7ffBO0hxgAAICDdo9e3/wQzJXAfVHUXoUAAAAc/BJ4UovaQwwAAOyk3YDWNzeCuRM4e4jaqxAAAICDdo9e3/wReHWM2jkHAADg4R+hzg2sdYWTQwAAAABJRU5ErkJggg==");
     background-repeat: no-repeat;
     background-size: cover;
-    color: var(--bs-green);
-    
+    color: black;
 }
 
 .title{
@@ -66,12 +64,10 @@ body{
 
 .title2{
     font-size: x-large;
-    text-align: justify;
-    vertical-align: justify;
 }
 
 .recipelink{
     font-size: x-large;
-    color:var(--bs-green);
+    color: black;
 }
 

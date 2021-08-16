@@ -24,4 +24,6 @@ urlpatterns = [
     path('addauthor/', views.add_author),
     path('', views.index_view, name="home"),
     path('admin/', admin.site.urls),
+    path('login/', views.login_view, name="login"),
+    path('logout/', views.logout_view)
 ]
