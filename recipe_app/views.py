@@ -1,10 +1,11 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse, HttpResponse
+from django.shortcuts import render, HttpResponseRedirect, reverse
 from recipe_app.models import Recipe, Author
 from recipe_app.forms import AddRecipeForm, AddAuthorForm, LoginForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django import forms
 
 # Create your views here.
 def index_view(request):
@@ -22,55 +23,25 @@ def author_detail(request, id):
 
 @login_required
 def add_recipe(request):
-    # if not request.user.is_staff:
-    #     form = AddRecipeNonStaff(request.POST)
-    #     if form.is_valid():
-    #         data = form.cleaned_data
-    #         recipe = Recipe.objects.create(
-    #             title=data['title'],
-    #             author=data['author'],
-    #             description=data['description'],
-    #             time_required=data['time_required'],
-    #             instructions=data['instructions']
-    #         )
-    #         return HttpResponseRedirect(reverse('home'))
-    # form = AddRecipeNonStaff()
-    # return render(request, 'generic_form.html', {'form': form})   
-    
     if request.method == "POST":
-        if request.user.is_staff:
-            form = AddRecipeForm(request.POST)
-            if form.is_valid():
-                data = form.cleaned_data
-                recipe = Recipe.objects.create(
-                    title=data['title'], 
-                    author=data['author'],
-                    description=data['description'],
-                    time_required=data['time_required'],
-                    instructions=data['instructions']
-                )
-                return HttpResponseRedirect(reverse('home'))
-            form = AddRecipeForm()
-        elif not request.user.is_staff:
-            form = AddRecipeForm(request.POST)
-            if form.is_valid():
-                data = form.cleaned_data
-                recipe = Recipe.objects.create(
-                    title=data['title'],
-                    author=data['author'],
-                    description=['description'],
-                    time_required=data['time_required'],
-                    instructions=data['instructions']
-                )
-                return HttpResponseRedirect(reverse('home'))
-            form = AddRecipeForm()
-
-        return render(request, 'generic_form.html', {'form': form})
+        form = AddRecipeForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            recipe = Recipe.objects.create(
+                title=data['title'], 
+                author=data['author'],
+                description=data['description'],
+                time_required=data['time_required'],
+                instructions=data['instructions']
+            )
+            return HttpResponseRedirect(reverse('home'))
+    form = AddRecipeForm()
+    if not request.user.is_staff:
+        form.fields['author'] = forms.ModelChoiceField(queryset=Author.objects.filter(user=request.user))
+    return render(request, 'generic_form.html', {'form': form})
 
 @login_required
 def add_author(request):
-    # if not request.user.is_staff:
-    #     return HttpResponse('Non-staff users cannot add authors.')
     if not request.user.is_staff:
         messages.error(request, 'Non-staff users cannot add authors.', extra_tags='error')
         return HttpResponseRedirect(reverse('home'))
@@ -99,6 +70,8 @@ def login_view(request):
                 login(request, user)
                 messages.success(request, 'Login successful!', extra_tags='success')
                 return HttpResponseRedirect(request.GET.get('next', reverse('home')))
+            else:
+                messages.error(request, 'Invalid username or password!', extra_tags='error')
 
     form = LoginForm()
     return render(request, 'generic_form.html', {"form": form})
