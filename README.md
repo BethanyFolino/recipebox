@@ -1,0 +1,4 @@
+# Recipe Box
+Recipe Box is a recipe sharing app that allows users to create authors and recipes. Each author has their own page with a list of recipes they created that are links to the individual pages for each recipe. Each recipe shows the recipe title, time it takes to make, description, instructions, and author on its individual page. I originally made this project as part of Kenzie Academy's software engineering program. 
+
+For extra credit, I made it so only a superuser could create authors or create recipes as any available author in the database. Non-superusers can only create recipes as themselves, and they will get an error message if they try to create an author.
